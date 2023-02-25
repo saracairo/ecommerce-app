@@ -1,0 +1,4 @@
+<!-- il paragrafo col bottone viene mostrato alla condizione di *ngIf; tramite event binding, al bottone è assegnato il metodo notify.emit() richiamabile al click -->
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>

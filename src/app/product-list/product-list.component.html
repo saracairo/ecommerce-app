@@ -1,0 +1,28 @@
+<h2>Products</h2>
+
+<!-- tramite *ngFor, il div seguente si ripete per ogni prodotto della lista -->
+<div *ngFor="let product of products">
+
+  <h3>
+    <a [title]=" product.name + ' details' "
+       [routerLink]="['/products', product.id]">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <!-- tramite *ngIf, Angular crea il seguente paragrafo solo se è presente una descrizione nell'oggetto "product"-->
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+  <button type="button" (click)="share()">
+    Share
+  </button>
+
+  <!-- con l'event binding (notify)="onNotify()" il metodo viene assegnato al ProductListComponent in modo che possa ricevere i dati dal componente child ProductAlertsComponent -->
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+
+</div>
